@@ -1,7 +1,6 @@
 ---
 marp: true
 math: mathjax
-
 ---
 <!-- markdownlint-disable MD033 -->
 # **Git Commands\:**
