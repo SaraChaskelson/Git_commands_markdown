@@ -1,333 +1,513 @@
 ---
 marp: true
+math: mathjax
 ---
-
+<!-- markdownlint-disable --> 
 # **Git Commands\:**
 
-- ## **pre-commit**
+- # Pre-commit
 
-pre-commit is a tool intended for use within software development processes, and allows you to run automatic tests and tools before committing the code. That is, it is designed to help developers test their code and make sure it meets certain standards before committing to changes in a version control system, such as *Git*.
+    pre-commit is a tool intended for use within software development processes, and allows you to run automatic tests and tools before committing the code. That is, it is designed to help developers test their code and make sure it meets certain standards before committing to changes in a version control system, such as *Git*.
 
-### Pros/cons
+    ### Pros/cons
 
-- **+ Save time on CI**
- you will save some time
-- **- Force developers to test before pushing**
-This point is distrust in your workers, just disguised. If you don't trust your developers, fire them, or fire yourself.
+    - **+ Save time on CI**
+    you will save some time
+    - **- Force developers to test before pushing**
+    This point is distrust in your workers, just disguised. If  you don't trust your developers, fire them, or fire yourself.
 
-### Coding examples
+    ### Coding examples
 
-- run
+    - Run
 
-```bash
-pre-commit install
-```
+    ```bash
+    pre-commit install
+    ```
 
-to install pre-commit into your git hooks.
+    to install pre-commit into your git hooks.
+    <br>
+    - Run
 
-- run
+    ```bash
+    pre-commit run --all-files
+    ```
 
-```bash
-pre-commit run --all-files
-```
+    to manually run all pre-commit hooks on a repository
+    <br>
+    - Run
 
- to manually run all pre-commit hooks on a repository
+    ```bash
+    git commit --no-verify
+    ```
 
-- run
+    If you don't want on a specific occasion to go through the hooks
 
-```bash
-git commit --no-verify
-```
+    ### Alternative
 
-If you don't want on a specific occasion to go through the hooks
+    JavaScript, Git, GitHub, Python, and jQuery are the most popular alternatives and competitors to pre-commit.
 
-### Alternative
+    ### Screenshots
 
-JavaScript, Git, GitHub, Python, and jQuery are the most popular alternatives and competitors to pre-commit.
+    ![pre-commit](/assets/pre-commit-install.png)
 
-### Screenshots
+    ---
 
-![pre-commit](/assets/pre-commit-install.png)
+- # **.gitignore**
 
----
+    gitignore file is used in a git repository to ignore the files and directories which are unnecessary to project this will be ignored by the git once the changes as been committed to the Remote repository
 
-- ## **.gitignore**
+    ### Pros/cons
 
-gitignore file is used in a git repository to ignore the files and directories which are unnecessary to project this will be ignored by the git once the changes as been committed to the Remote repository
+    - **+ Improves the “signal to noise ratio” for any Git command.**
+    - **+ Allows builds to come from one source.**
+    - **+ Avoids potentially costly commits of files that shouldn’t be versioned.**
 
-### Pros/cons
+    ### Coding examples
 
-- **+ Improves the “signal to noise ratio” for any Git command.**
-- **+ Allows builds to come from one source.**
-- **+ Avoids potentially costly commits of files that shouldn’t be versioned.**
+    - This is an example of what the .gitignore file could look like:
 
-### Coding examples
+    ```bash
+    # Ignore Mac system files
+    .DS_store
 
-- This is an example of what the .gitignore file could look like:
+    # Ignore node_modules folder
+    node_modules
 
-```bash
-# Ignore Mac system files
-.DS_store
+    # Ignore all text files
+    *.txt 
 
-# Ignore node_modules folder
-node_modules
+    # Ignore files related to API keys
+    .env
 
-# Ignore all text files
-*.txt
+    # Ignore SASS config files
+    .sass-cache
+    ```
+    <br>
 
-# Ignore files related to API keys
-.env
+    - To add or change your global .gitignore file, run the following command:
 
-# Ignore SASS config files
-.sass-cache
-```
+    ```bash
+    git config --global core.excludesfile ~/.gitignore_global
+    ```
 
-- To add or change your global .gitignore file, run the following command:
+    This will create the file ~/.gitignore_global. Now you can edit that file the same way as a local .gitignore file. All of your Git repositories will ignore the files and folders listed in the global .gitignore file.
 
-```bash
-git config --global core.excludesfile ~/.gitignore_global
-```
+    ### Alternative
 
-This will create the file ~/.gitignore_global. Now you can edit that file the same way as a local .gitignore file. All of your Git repositories will ignore the files and folders listed in the global .gitignore file.
+    - assume-unchanged
 
-### Alternative
+    The assume-unchanged option was envisioned as a performance aid but is often mentioned in the context of workarounds to ignore files. You explicitly tell Git not to check if the file has been changed. This method is planned to be applied to files that you want TRACKED, LOCAL CHANGES IGNORED.
 
-- assume-unchanged
+    Here are the commands you will need for this method:
 
-The assume-unchanged option was envisioned as a performance aid but is often mentioned in the context of workarounds to ignore files. You explicitly tell Git not to check if the file has been changed. This method is planned to be applied to files that you want TRACKED, LOCAL CHANGES IGNORED.
+    To ignore local changes to tracked files:
 
-Here are the commands you will need for this method:
+    ```bash
+    git update-index --assume-unchanged [<file>...]
+    ```
 
-To ignore local changes to tracked files:
+    To track local changes again:
 
-```bash
-git update-index --assume-unchanged [<file>...]
-```
+    ```bash
+    git update-index --no-assume-unchanged [<file>...]
+    ```
 
-To track local changes again:
+    To list all files assumed unchanged:
 
-```bash
-git update-index --no-assume-unchanged [<file>...]
-```
+    ```bash
+    git ls-files -v | grep '^[[:lower:]]'
+    ```
 
-To list all files assumed unchanged:
+    ### Screenshot
 
-```bash
-git ls-files -v | grep '^[[:lower:]]'
-```
+    ![ignore](/assets/gitignore.png)
 
-### Screenshot
+    ---
 
-![ignore](/assets/gitignore.png)
+    - ## **git remote**
 
----
+    The git remote command lets you create, view, and delete connections to other repositories. Remote connections are more like bookmarks rather than direct links into other repositories.
 
-- ## **git remote**
+    ### Coding examples
 
-   The git remote command lets you create, view, and delete connections to other repositories. Remote connections are more like bookmarks rather than direct links into other repositories.
+    - run
 
-### Coding examples
+    ```bash
+    git remote -v 
+    ```
 
-- run
+    to see the current remote URL.
 
-```bash
-git remote -v 
-```
+    - run
 
-to see the current remote URL.
+    ```bash
+    git remote set-url <old-url> <new-url>
+    ```
 
-- run
+    to update the remote URL
 
-```bash
-git remote set-url <old-url> <new-url>
-```
+    ### Alternative
 
-to update the remote URL
+    Initialize your local git repository:
 
-### Alternative
+    ```bash
+    git init --bare
+    ```
 
-Initialize your local git repository:
+    Now, you can work with your repository as it has a remote server. But it actually doesn’t have a remote one. The server of this repository is a local one hosted in the folder.
 
-```bash
- git init --bare
-```
+    ### Screenshots
 
-Now, you can work with your repository as it has a remote server. But it actually doesn’t have a remote one. The server of this repository is a local one hosted in the folder.
+    ![git-remote](/assets/git-remote.png)
 
-### Screenshots
+    ---
 
-![git-remote](/assets/git-remote.png)
+    - ## **git pull**
 
----
+        The git pull command is used to retrieve and download content from a remote repository and update the local repository once it has been downloaded. In Git-based workflows, it's common to merge remote upstream changes into your local repository.
+        The Git pull command is used to retrieve and merge code changes from the remote repository to the local repository.    Git pull is a combination of two commands, Git fetch followed by Git merge.    In the first step, a Git fetch is performed that downloads content from the required remote repository. The Git merge command then merges multiple commit sequences into a single branch.
 
-- ## **git pull**
+    ### Pros/cons
 
-    The git pull command is used to retrieve and download content from a remote repository and update the local repository once it has been downloaded. In Git-based workflows, it's common to merge remote upstream changes into your local repository.
-    The Git pull command is used to retrieve and merge code changes from the remote repository to the local repository.    Git pull is a combination of two commands, Git fetch followed by Git merge.    In the first step, a Git fetch is performed that downloads content from the required remote repository. The Git merge command then merges multiple commit sequences into a single branch.
+    - **+ If a developer finds out that there are new, updated files on a remote repository like GitHub, they will likely want to copy those changes from GitHub to both their local repository and into their working directory.**  
 
-### Pros/cons
+    - **+ git pull is basically a shortcut for**
 
-- **+ If a developer finds out that there are new, updated files on a remote repository like GitHub, they will likely want to copy those changes from GitHub to both their local repository and into their working directory.**  
+    ```bash
+    git fetch ... 
+    ```
 
-- **+ git pull is basically a shortcut for**
+    followed by
 
-```bash
- git fetch ... 
- ```
+    ```bash
+    git merge ...
+    ```
 
-followed by
+    - **- using git pull , puts us at risk of turning our PR branch**
+    (and the upstream branch if the changes are merged) into a merge-commits spaghetti or even merging changes from unexpected remote branches into our PR branch.
 
- ```bash
-  git merge ...
- ```
+    ### Coding examples
 
-- **- using git pull , puts us at risk of turning our PR branch**
-(and the upstream branch if the changes are merged) into a merge-commits spaghetti or even merging changes from unexpected remote branches into our PR branch.
+    - run
 
-### Coding examples
+    ```bash
+    git pull --rebase
+    ```
 
-- run
+    to change the default pull strategy
 
-```bash
-git pull --rebase
-```
+    ### Alternative
 
-to change the default pull strategy
+    `git fetch` + `git merge`
 
-### Alternative
+    ### Screenshots
 
-`git fetch` + `git merge`
+    ![git pull](/assets/pull-vs-fetch.png)
+    ![pull](/assets/pull.jpg)
 
-### Screenshots
+    ---
 
-![git pull](/assets/pull-vs-fetch.png)
-![pull](/assets/pull.jpg)
+    - ## **git push**
 
----
+        The command git push is used to transfer the commits or pushing the contect fron the local repository to the remote repository.
+        The command is used after a local repository has been modified, and the modifications are to be shared with the remote team members.
 
-- ## **git push**
+    ### Pros/cons
 
-    The command git push is used to transfer the commits or pushing the contect fron the local repository to the remote repository.
-    The command is used after a local repository has been modified, and the modifications are to be shared with the remote team members.
+    - **+ Far Updated:**
 
-### Pros/cons
+    Allows to update the distant databases with the changes made in local reservoirs.
 
-- **+ Far Updated:**
+    - **- Risk to delete changes:**
 
-Allows to update the distant databases with the changes made in local reservoirs.
+    Incorrect use of the command can cause important changes in the remote reservoir.
 
-- **- Risk to delete changes:**
+    ### Coding examples
 
-Incorrect use of the command can cause important changes in the remote reservoir.
+    - run
 
-### Coding examples
+    ```bash
+    git push -u origin [branch]
+    ```
 
-- run
+    this creates an upstream tracking branch with a lasting relationship to your local branch
 
-```bash
-git push -u origin [branch]
-```
+    ### Alternative
 
-this creates an upstream tracking branch with a lasting relationship to your local branch
+    - Using external files:
 
-### Alternative
+    The code can be shared using external files such as network drives, mobile drives or cloud storage services (Dropbox, Google Drive, etc.).
 
-- Using external files:
+    ### Screenshots
 
- The code can be shared using external files such as network drives, mobile drives or cloud storage services (Dropbox, Google Drive, etc.).
+    ![git push](/assets/git-push.png)
 
-### Screenshots
+    ---
 
-![git push](/assets/git-push.png)
+    - ## **git stash**
 
----
+        The git stash command takes your uncommitted changes (both staged and unstaged), saves them away for later use, and then reverts them from your working copy.
 
-- ## **git stash**
+    ### Pros/cons
 
-    The git stash command takes your uncommitted changes (both staged and unstaged), saves them away for later use, and then reverts them from your working copy.
+    - **+ The git stash command will help a developer switch branches to work on something else without committing to incomplete work**  
 
-### Pros/cons
+    - **+ git stash is a flexible tool that helps maintain a smooth and clean workflow.**
 
-- **+ The git stash command will help a developer switch branches to work on something else without committing to incomplete work**  
+    - **- Forgot to restore the changes**
 
-- **+ git stash is a flexible tool that helps maintain a smooth and clean workflow.**
+    It's easy to forget that the changes have been kept in STASH. If you do not recover the changes at the appropriate time, they may remain aside and not enter your current job.
 
-- **- Forgot to restore the changes**
+    ### Coding examples
 
-It's easy to forget that the changes have been kept in STASH. If you do not recover the changes at the appropriate time, they may remain aside and not enter your current job.
+    - run
 
-### Coding examples
+    ```bash
+    git stash pop
+    ```
 
-- run
+    to restore the stashed changes and schedules the stash for deletion from the reference
 
-```bash
-git stash pop
-```
+    - run
 
-to restore the stashed changes and schedules the stash for deletion from the reference
+    ```bash
+    git stash list
+    ```
 
-- run
+    to get the stash list.
 
-```bash
-git stash list
-```
+    ### Alternative
 
- to get the stash list.
+    Instead of keeping the changes aside with Git Stash, you can create a temporary branch and keep the changes.
 
-### Alternative
+    ```bash
+    git checkout -b temporary-branch
+    ```
 
-Instead of keeping the changes aside with Git Stash, you can create a temporary branch and keep the changes.
+    ### Screenshots
 
-```bash
-git checkout -b temporary-branch
-```
+    ![stash](/assets/stash.png)
 
-### Screenshots
+    ---
 
-![stash](/assets/stash.png)
+    - ## **git fetch**
 
----
+    The git fetch command downloads commits, files, and refs from a remote repository into your local repo. Fetching is what you do when you want to see what everybody else has been working on.
+    ### Pros/cons
 
-- ## **git fetch**
+    - **+ Keeping the current work tree:**
 
-The git fetch command downloads commits, files, and refs from a remote repository into your local repo. Fetching is what you do when you want to see what everybody else has been working on.
-### Pros/cons
+    Git Fetch does not change your current work tree or local branches, allowing you to check the changes before merging.
 
-- **+ Keeping the current work tree:**
+    - **+ Tracking remote changes:**
 
-Git Fetch does not change your current work tree or local branches, allowing you to check the changes before merging.
+    Allows to see all the updates and changes made in the remote reservoir.
+    Conflict Prevention:
 
-- **+ Tracking remote changes:**
+    - **+ Allows to check the changes and prepare for mergers in a neat way**
 
-Allows to see all the updates and changes made in the remote reservoir.
-Conflict Prevention:
+    - **- The complexity of the process:**
 
-- **+ Allows to check the changes and prepare for mergers in a neat way**
+    Requires additional actions to perform the merger after FETCH, which may be complicated to beginner users. branches to work on something else without committing to incomplete work**
 
-- **- The complexity of the process:**
+    ### Coding examples:
 
-Requires additional actions to perform the merger after FETCH, which may be complicated to beginner users. branches to work on something else without committing to incomplete work**
+    - run
 
-### Coding examples:
+    ```bash
+    git fetch origin
+    ```
 
-- run
+    to synchronize your local repository with the central repository's main branch.
 
-```bash
-git fetch origin
-```
+    ### Alternative
 
- to synchronize your local repository with the central repository's main branch.
+    Git Pull is a combination of `Git Fetch` and `Git Merge` in one action. It brings the changes from the remote reservoir and automatically merges them with your local industry.
 
-### Alternative
+    ```bash
+    git pull
+    ```
 
-Git Pull is a combination of `Git Fetch` and `Git Merge` in one action. It brings the changes from the remote reservoir and automatically merges them with your local industry.
+    ---
 
-```bash
-git pull
-```
+    - ## **Git's command which force**
 
----
+    In `Git`, there are several commands that use the `--force` flag. Using this option can be very powerful, but also dangerous if not used correctly, as it can change existing history and bypass restrictions.
 
-- Git's command which force.
-- Good git commit messages.
-- Advanced markdown: (mermaid, math).
+    ### Pros/cons
+
+    - **+ Clean and tidy history**
+    **Proper** use of the `--force` option can lead to a project with a clean and tidy history, making it easier to track and manage the code over time
+    - **- Dangerous if not used correctly**
+    As it can change existing history and bypass restrictions.
+
+    ### Coding examples
+
+    - run
+
+    ```bash
+    git checkout  --force
+    ```
+
+    To force Git to switch branches, undo any uncommitted changes or local
+    changes to the current branch.
+
+    - run
+
+    ```bash
+    git branch -f <branch_name> <commit_hash>
+    ```
+
+    To forces Git to move a certain branch to a new commit.
+
+    - run
+
+    ```bash
+    git push --force -u origin 
+    ```
+
+    To replace the remote repository to match exactly what your
+    local repository looked like when you ran the command
+    ### Alternative
+
+    In general, the --force option exists in various Git commands, so there is no 
+    general alternative, but each command has its own equivalent alternative: **without the `--force` flag**.
+    I will give some examples:
+
+    - run
+
+    ```bash
+    git push --force-with-release origin
+    ```
+
+    To verify that there are no additional changes in the remote repository since the last time you performed a fetch or pull.
+    If there are more changes, this flag will raise an error to prevent you from overriding the new commits.
+
+    ### Screenshots
+
+    ![force](/assets/pull-with-force.png)
+
+    ---
+
+    - ## **Good git commit messages**
+
+    A commit message is descriptive text that is added to the commit object by the developer who made the commit. It has a title line, and an optional body.
+
+    A **good commitment message** is one that clearly and succinctly says what has changed, and why it has changed.
+
+    ### Pros/cons
+
+    - **+ creating quality commit messages makes using and collaborating with Git a lot easier:**
+    **> To help a future reader quickly understand what changed and why it changed**
+    **> To assist with easily undoing specific changes**
+    **> To prepare change notes or bump versions for a release**
+
+    ### Coding examples
+
+    - run
+
+    ```bash
+    git commit -m "Add Account Delete Route"
+    ```
+
+    To add the header message directly from the command line.
+
+    - run
+
+    ```bash
+    git log
+    ```
+
+    In order to view the list of commits performed in the current repository
+
+    ### Alternative
+
+    Writing a good commitment message is too important to find an alternative...
+    If in any case you want to commit to a change without notice, use the command
+
+    - run
+
+    ```bash
+    git commit -a --allow-empty-message -m ""
+    ```
+
+    To commit without a message.
+
+    ### Screenshots
+
+    ![commit](/assets/commit.png)
+
+    ---
+
+    - ## **Advanced markdown**
+
+    Sometimes we will want to use an illustration for a more detailed description or explanation.
+    For this we will use advanced notation.
+    There are different types of advanced markdowns, for example:
+
+    - Mermaid
+    - Math
+
+    **Mermaid** is a JavaScript-based tool that transforms Markdown-style text into dynamic diagrams, allowing you to create and modify them effortlessly.
+
+    With Mermaid, you can generate the following diagram types:
+
+    - Flowchart
+    - Sequence Diagram
+    - Class Diagram
+    - Gantt
+    - Pie Chart
+
+    In order to combine mathematical expressions we will use $ or $$.
+
+    ### Pros/cons
+
+    - **+ Saves cumbersome descriptions and explanations.**
+    Any process or distribution can be illustrated using Mermaid.
+    - **- You need to know well the syntax of writing used for illustration.**
+
+    ### Coding examples
+
+    - write
+
+    ```bash
+        '```mermaid
+        flowchart TD;
+            A[Start] --> B[Process 1];
+            B --> C[Process 2];
+            C --> D[End];
+        '```
+    ```
+
+    To get the following flowchart.
+
+    ```mermaid
+    flowchart TD;
+        A[Start] --> B[Process 1];
+        B --> C[Process 2];
+        C --> D[End];
+    ```
+
+    - write
+
+    ```bash
+    $a \ne 0$ 
+    or
+    $(ax^2 + bx + c = 0)$
+    ```
+
+    To get the mathematical expressions:
+
+    $a \ne 0$    
+    $(ax^2 + bx + c = 0)$
+
+    ### Alternative
+
+    If you get into trouble, you can attach pictures instead of messing with mermaid and math
+    You can display an image by adding ! and wrapping the alt text in [ ]. Alt text is a short text equivalent of the information in the image. Then, wrap the link for the image in parentheses ().
+
+    ### Screenshots
+
+    ![mermaid](/assets/pie-chart.png)
+
+    <!-- markdownlint-enable -->
