@@ -5,22 +5,15 @@ math: mathjax
 <!-- markdownlint-disable MD033 -->
 # **Git Commands\:**
 
-<style>
-t { font-size: 30px; font-weight:bold; color: Black ;text-decoration: underline;}
-r { color: Red }
-o { color: Orange }
-g { color: Green }
-</style>
-
 ## <t>1.Pre-commit
 
 pre-commit is a tool intended for use within software development processes, and allows you to run automatic tests and tools before committing the code. That is, it is designed to help developers test their code and make sure it meets certain standards before committing to changes in a version control system, such as *Git*.
 
 ### 1.1 Pros/cons
 
-- **<g> Save time on CI**
+- **+ Save time on CI**
 you will save some time
-- **<r> Force developers to test before pushing**
+- **- Force developers to test before pushing**
 This point is distrust in your workers, just disguised. If  you don't trust your developers, fire them, or fire yourself.
 
 ### 1.2 Coding examples
@@ -61,16 +54,16 @@ JavaScript, Git, GitHub, Python, and jQuery are the most popular alternatives an
 
 ---
 
-## <t>2.gitignore</t>
+## 2.gitignore
 
 gitignore file is used in a git repository to ignore the files and directories which are unnecessary to project this will be ignored by the git once the changes as been committed to the Remote repository
 
 ### 2.1 Pros/cons
 
-- <g> Improves the “signal to noise ratio” for any Git command.**
-- <g> Allows builds to come from one source.**
-- <g> Avoids potentially costly commits of files that shouldn’t be versioned.**
-- <r> Accidentally ignoring important files:</r> If an important file is added to .gitignore by mistake, it will not be included in the Git repository and will not reach other developers. This can cause severe problems in identifying and resolving bugs.
+- **+ Improves the “signal to noise ratio” for any Git command**
+- **+ Allows builds to come from one source.**
+- **+ Avoids potentially costly commits of files that shouldn’t be versioned.**
+- **- Accidentally ignoring important files:** If an important file is added to .gitignore by mistake, it will not be included in the Git repository and will not reach other developers. This can cause severe problems in identifying and resolving bugs.
 
 ### 2.2 Coding examples
 
@@ -134,13 +127,13 @@ git ls-files -v | grep '^[[:lower:]]'
 
 ---
 
-## <t>3.git remote
+## 3.git remote
 
 The git remote command lets you create, view, and delete connections to other repositories. Remote connections are more like bookmarks rather than direct links into other repositories.
 
 ### 3.1 Coding examples
 
-- run
+- Run
 
 ```bash
 git remote -v 
@@ -148,7 +141,7 @@ git remote -v
 
 to see the current remote URL.
 
-- run
+- Run
 
 ```bash
 git remote set-url <old-url> <new-url>
@@ -172,16 +165,16 @@ Now, you can work with your repository as it has a remote server. But it actuall
 
 ---
 
-## <t>4.git pull
+## 4.git pull
 
 The git pull command is used to retrieve and download content from a remote repository and update the local repository once it has been downloaded. In Git-based workflows, it's common to merge remote upstream changes into your local repository.
 The Git pull command is used to retrieve and merge code changes from the remote repository to the local repository.    Git pull is a combination of two commands, Git fetch followed by Git merge.    In the first step, a Git fetch is performed that downloads content from the required remote repository. The Git merge command then merges multiple commit sequences into a single branch.
 
 ### 4.1 Pros/cons
 
-- <g> Easy updating:</g> If a developer finds out that there are new, updated files on a remote repository like GitHub, they will likely want to copy those changes from GitHub to both their local repository and into their working directory.  
+- **+ Easy updating:** If a developer finds out that there are new, updated files on a remote repository like GitHub, they will likely want to copy those changes from GitHub to both their local repository and into their working directory.  
 
-- <g> git pull is basically a shortcut for:
+- **+** git pull is basically a shortcut for:
 
     ```bash
     git fetch ... 
@@ -193,12 +186,12 @@ The Git pull command is used to retrieve and merge code changes from the remote 
     git merge ...
     ```
 
-- <r> using git pull , puts us at risk of turning our PR branch:</r>
+- **- using git pull , puts us at risk of turning our PR branch:**
 (and the upstream branch if the changes are merged) into a merge-commits spaghetti or even merging changes from unexpected remote branches into our PR branch.
 
 ### 4.2 Coding examples
 
-- run
+- Run
 
 ```bash
 git pull --rebase
@@ -217,22 +210,20 @@ to change the default pull strategy
 
 ---
 
-## <t>5.git push
+## 5.git push
 
 The command git push is used to transfer the commits or pushing the contect fron the local repository to the remote repository.
 The command is used after a local repository has been modified, and the modifications are to be shared with the remote team members.
 
 ### 5.1 Pros/cons
 
-- <g> Far Updated:</g>
-Allows to update the distant databases with the changes made in local reservoirs.
+- **+ Far Updated:** Allows to update the distant databases with the changes made in local reservoirs.
 
-- <r> Risk to delete changes:</r>
-Incorrect use of the command can cause important changes in the remote reservoir.
+- **- Risk to delete changes:** Incorrect use of the command can cause important changes in the remote reservoir.
 
 ### 5.2 Coding examples
 
-- run
+- Run
 
     ```bash
     git push -u origin [branch]
@@ -252,37 +243,36 @@ The code can be shared using external files such as network drives, mobile drive
 
 ---
 
-## <t>6.git stash
+## 6.git stash
 
 The git stash command takes your uncommitted changes (both staged and unstaged), saves them away for later use, and then reverts them from your working copy.
 
 ### 6.1 Pros/cons
 
-- <g> The git stash command will help a developer switch branches to work on something else without committing to incomplete work
+- **+** The git stash command will help a developer switch branches to work on something else without committing to incomplete work
 
-- <g>smooth and clean workflow:</g>
- git stash is a flexible tool that helps maintain a smooth and clean workflow.
+- **+ smooth and clean workflow:** git stash is a flexible tool that helps maintain a smooth and clean workflow.
 
-- <r> Forgot to restore the changes:</r>
-It's easy to forget that the changes have been kept in STASH. If you do not recover the changes at the appropriate time, they may remain aside and not enter your current job.
+- **- Forgot to restore the changes:** It's easy to forget that the changes have been kept in STASH. If you do not recover the changes at the appropriate time, they may remain aside and not enter your current job.
 
 ### 6.2 Coding examples
 
 - Run
 
-    ```bash
-    git stash pop
-    ```
+```bash
+git stash pop
+```
 
-    to restore the stashed changes and schedules the stash for deletion from the reference
+to restore the stashed changes and schedules the stash for deletion from the reference
 <br>
+
 - Run
 
-    ```bash
-    git stash list
-    ```
+```bash
+git stash list
+```
 
-    to get the stash list.
+to get the stash list.
 
 ### 6.3 Alternative
 
@@ -298,23 +288,22 @@ git checkout -b temporary-branch
 
 ---
 
-## <t>7.git fetch
+## 7.git fetch
 
 The git fetch command downloads commits, files, and refs from a remote repository into your local repo. Fetching is what you do when you want to see what everybody else has been working on.
 
 ### 7.1 Pros/cons
 
-- <g> Keeping the current work tree:</g>
+- **+ Keeping the current work tree:**
 Git Fetch does not change your current work tree or local branches, allowing you to check the changes before merging.
 
-- <g> Tracking remote changes:</g>
+- **+ Tracking remote changes:**
 Allows to see all the updates and changes made in the remote reservoir.
 Conflict Prevention:
 
-- <g> Allows to check the changes and prepare for mergers in a neat way
+- **+** Allows to check the changes and prepare for mergers in a neat way
 
-- <r>The complexity of the process:</r>
-Requires additional actions to perform the merger after FETCH, which may be complicated to beginner users. branches to work on something else without committing to incomplete work**
+- **- The complexity of the process:** Requires additional actions to perform the merger after FETCH, which may be complicated to beginner users. branches to work on something else without committing to incomplete work**
 
 ### 7.2 Coding examples
 
@@ -336,16 +325,14 @@ git pull
 
 ---
 
-## <t>8.Git's command which force
+## 8.Git's command which force
 
 In `Git`, there are several commands that use the `--force` flag. Using this option can be very powerful, but also dangerous if not used correctly, as it can change existing history and bypass restrictions.
 
 ### 8.1 Pros/cons
 
-- <g> Clean and tidy history:</g>
-**Proper** use of the `--force` option can lead to a project with a clean and tidy history, making it easier to track and manage the code over time
-- <r> Dangerous if not used correctly:</r>
-As it can change existing history and bypass restrictions.
+- **+ Clean and tidy history: Proper** use of the `--force` option can lead to a project with a clean and tidy history, making it easier to track and manage the code over time
+- **- Dangerous if not used correctly:** As it can change existing history and bypass restrictions.
 
 ### 8.2 Coding examples
 
@@ -396,7 +383,7 @@ If there are more changes, this flag will raise an error to prevent you from ove
 
 ---
 
-## <t>9.Good git commit messages
+## 9.Good git commit messages
 
 A commit message is descriptive text that is added to the commit object by the developer who made the commit. It has a title line, and an optional body.
 
@@ -404,7 +391,7 @@ A **good commitment message** is one that clearly and succinctly says what has c
 
 ### 9.1 Pros/cons
 
-<g> creating quality commit messages makes using and collaborating with Git a lot easier:</g>
+**+ creating quality commit messages makes using and collaborating with Git a lot easier:**
 
 1. To help a future reader quickly understand what changed and why it changed
 2. To assist with easily undoing specific changes
@@ -447,7 +434,7 @@ To commit without a message.
 
 ---
 
-## <t>10.Advanced markdown
+## 10.Advanced markdown
 
 Sometimes we will want to use an illustration for a more detailed description or explanation.
 For this we will use advanced notation.
@@ -470,9 +457,9 @@ In order to combine mathematical expressions we will use `$` or `$$`.
 
 ### 10.1 Pros/cons
 
-- <g> Saves cumbersome descriptions and explanations:</g>
+- **+ Saves cumbersome descriptions and explanations:**
 Any process or distribution can be illustrated using Mermaid.
-- <r>You need to know well the syntax of writing used for illustration.
+- **-** You need to know well the syntax of writing used for illustration.
 
 ### 10.2 Coding examples
 
