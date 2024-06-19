@@ -5,7 +5,7 @@ math: mathjax
 <!-- markdownlint-disable MD033 -->
 # **Git Commands\:**
 
-## <t>1.Pre-commit
+## 1.Pre-commit
 
 pre-commit is a tool intended for use within software development processes, and allows you to run automatic tests and tools before committing the code. That is, it is designed to help developers test their code and make sure it meets certain standards before committing to changes in a version control system, such as *Git*.
 
